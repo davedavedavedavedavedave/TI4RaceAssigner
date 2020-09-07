@@ -1,13 +1,20 @@
-<h1><span>Twiligh Imperium</span> Race Assigner</h1>
+<h1><span>Twilight Imperium</span> Race Assigner</h1>
 <button mat-mini-fab aria-roledescription="Open Settings Menu" (click)="openSettings()" class="settingsBtn">
   <mat-icon>settings</mat-icon>
 </button>
+<div *ngIf="settings$ | async as settings" class="tinyurl">
+  <button mat-raised-button (click)="generateURL(settings)">
+    <mat-icon>save</mat-icon> Save as TinyURL
+  </button>
+  <mat-form-field color="accent">
+    <mat-label>TinyURL</mat-label>
+    <input matInput [value]="tinyURL" (click)="$event.target.select()">
+  </mat-form-field>
+</div>
 <div *ngIf="settings$ | async as settings" class="players">
-  <div *ngFor="let player of settings.players; let i = index">
-    <app-player [player]="player" (playerChange)="changePlayer($event, settings, i)" (remove)="removePlayer(settings, i)"></app-player>
-  </div>
+  <app-player *ngFor="let player of settings.players; let i = index" [player]="player" [availableRaces]="settings.availableRaces" (playerChange)="settingsService.changePlayer($event, i)" (remove)="settingsService.removePlayer(i)"></app-player>
   <div class="addPlayer">
-    <button mat-mini-fab aria-roledescription="Add a new player" (click)="addPlayer()">
+    <button mat-mini-fab aria-roledescription="Add a new player" (click)="settingsService.addPlayer()">
       <mat-icon>add</mat-icon>
     </button>
   </div>

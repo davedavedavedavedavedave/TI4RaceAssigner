@@ -13,7 +13,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 export class SettingsComponent implements OnInit {
   public settings$: Observable<Settings>;
 
-  constructor(public dialogRef: MatDialogRef<SettingsComponent>, private settingsService: SettingsService) {
+  constructor(public dialogRef: MatDialogRef<SettingsComponent>, public settingsService: SettingsService) {
     this.settings$ = settingsService.getSettings();
   }
 
@@ -32,7 +32,4 @@ export class SettingsComponent implements OnInit {
     this.settingsService.setSettings(settings);
   }
 
-  generateSeed(): void {
-    this.settingsService.setSeed(Math.random());
-  }
 }

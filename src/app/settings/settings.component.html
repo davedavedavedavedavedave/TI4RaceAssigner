@@ -2,11 +2,17 @@
   <div class="seed">
     <mat-form-field>
       <mat-label>Random Seed</mat-label>
-      <input matInput [value]="settings.seed">
+      <input matInput [value]="settings.seed" (change)="settingsService.setSeed($event.target.value)">
     </mat-form-field>
-    <button mat-mini-fab aria-roledescription="Generate new seed" (click)="generateSeed()">
+    <button mat-mini-fab aria-roledescription="Generate new seed" (click)="settingsService.setSeed()">
       <mat-icon>autorenew</mat-icon>
     </button>
+  </div>
+  <div class="racesPerPlayer">
+    <mat-form-field>
+      <mat-label>Races per player</mat-label>
+      <input matInput [value]="settings.racesPerPlayer" (change)="settingsService.setRacesPerPlayer($event.target.value)">
+    </mat-form-field>
   </div>
   <div class="availableRaces">
     <h2>Available Races</h2>

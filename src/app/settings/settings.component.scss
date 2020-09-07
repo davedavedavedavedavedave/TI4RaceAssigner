@@ -1,5 +1,5 @@
 .settings {
-  height: 80vh;
+  height: calc(100vh - 256px);
   max-width: 80vw;
   min-width: 632px;
   &::after {

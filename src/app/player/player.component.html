@@ -1,7 +1,18 @@
-<mat-form-field>
-  <mat-label>Player Name</mat-label>
-  <input matInput [value]="player.name" (change)="changeName($event.target.value)">
-</mat-form-field>
-<button mat-mini-fab aria-roledescription="Remove player" (click)="removePlayer()">
-  <mat-icon>delete</mat-icon>
-</button>
+<div class="container">
+  <mat-form-field>
+    <mat-label>Player Name</mat-label>
+    <input matInput [value]="player.name" (change)="changeName($event.target.value)">
+  </mat-form-field>
+  <button mat-mini-fab aria-roledescription="Remove player" (click)="removePlayer()">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Banned Races</mat-label>
+    <mat-select multiple (selectionChange)="changeBannedRaces($event.value)" [value]="player.bannedRaces" [compareWith]="bannedCompareFn">
+      <mat-option *ngFor="let race of availableRaces" [value]="race">{{ race.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <h2>Available Races</h2>
+  <app-race *ngFor="let race of player.availableRaces" [race]="race"></app-race>
+</div>

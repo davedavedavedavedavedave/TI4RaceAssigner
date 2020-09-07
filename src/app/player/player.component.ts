@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Player } from '../player';
+import { Race } from '../race';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-player',
@@ -8,6 +10,7 @@ import { Player } from '../player';
 })
 export class PlayerComponent implements OnInit {
   @Input() player: Player;
+  @Input() availableRaces: Race[];
   @Output() playerChange = new EventEmitter<Player>();
   @Output() remove = new EventEmitter<void>();
 
@@ -22,5 +25,12 @@ export class PlayerComponent implements OnInit {
   }
   removePlayer(): void {
     this.remove.emit();
+  }
+  changeBannedRaces(bannedRaces: Race[]): void {
+    this.player.bannedRaces = bannedRaces;
+    this.playerChange.emit(this.player);
+  }
+  bannedCompareFn(a: Race, b:Race): boolean {
+    return a.id == b.id;
   }
 }

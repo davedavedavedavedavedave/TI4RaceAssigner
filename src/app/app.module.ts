@@ -11,6 +11,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RaceComponent } from './race/race.component';
 
@@ -30,7 +31,8 @@ import { RaceComponent } from './race/race.component';
     MatDialogModule,
     MatListModule,
     MatInputModule,
-    DragDropModule
+    DragDropModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
