@@ -1,0 +1,19 @@
+h1 {
+  padding: 16px;
+
+  span {
+    color: transparent;
+    display: inline-block;
+    overflow: hidden;
+    background-image: url('../assets/title.png');
+    background-size: contain;
+    background-position: left center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+  }
+}
+.settingsBtn {
+  position: absolute;
+  right: 16px;
+  top: 24px;
+}

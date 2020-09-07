@@ -1,0 +1,7 @@
+<mat-form-field>
+  <mat-label>Player Name</mat-label>
+  <input matInput [value]="player.name" (change)="changeName($event.target.value)">
+</mat-form-field>
+<button mat-mini-fab aria-roledescription="Remove player" (click)="removePlayer()">
+  <mat-icon>delete</mat-icon>
+</button>

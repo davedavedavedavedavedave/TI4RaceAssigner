@@ -1,0 +1,33 @@
+<div *ngIf="settings$ | async as settings" class="settings">
+  <div class="seed">
+    <mat-form-field>
+      <mat-label>Random Seed</mat-label>
+      <input matInput [value]="settings.seed">
+    </mat-form-field>
+    <button mat-mini-fab aria-roledescription="Generate new seed" (click)="generateSeed()">
+      <mat-icon>autorenew</mat-icon>
+    </button>
+  </div>
+  <div class="availableRaces">
+    <h2>Available Races</h2>
+    <div
+      cdkDropList
+      #availableRaces="cdkDropList"
+      [cdkDropListData]="settings.availableRaces"
+      [cdkDropListConnectedTo]="[bannedRaces]"
+      (cdkDropListDropped)="drop($event, settings)">
+      <div class="race" *ngFor="let race of settings.availableRaces" cdkDrag><app-race [race]="race"></app-race></div>
+    </div>
+  </div>
+  <div class="bannedRaces">
+    <h2>Banned Races</h2>
+    <div
+      cdkDropList
+      #bannedRaces="cdkDropList"
+      [cdkDropListData]="settings.bannedRaces"
+      [cdkDropListConnectedTo]="[availableRaces]"
+      (cdkDropListDropped)="drop($event, settings)">
+      <div class="race" *ngFor="let race of settings.bannedRaces" cdkDrag><app-race [race]="race"></app-race></div>
+    </div>
+  </div>
+</div>

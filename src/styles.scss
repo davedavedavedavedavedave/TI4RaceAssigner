@@ -1,1 +1,40 @@
+/* theme setup */
+@import '~@angular/material/theming';
+// dark theme colors
+@include mat-core();
+$primary: mat-palette($mat-blue-grey);
+$accent:  mat-palette($mat-amber, A200, A100, A400);
+$warn:    mat-palette($mat-deep-orange);
+$theme: mat-dark-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+// fancy font for headlines
+$custom-typography: mat-typography-config(
+  $headline: mat-typography-level(48px, 1.2, 300, 'HandelGothicBold'),
+  $title: mat-typography-level(20px, 32px, 500, 'HandelGothicBold')
+);
+@include mat-core($custom-typography);
+
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: HandelGothicBold;
+  src: url('assets/fonts/Handel Gothic D Bold.otf') format('opentype');
+}
+@font-face {
+  font-family: HandelGothic;
+  src: url('assets/fonts/Handel Gothic D Light Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: AmbroiseFirminBold;
+  src: url('assets/fonts/Ambroise Firmin Bold.otf') format('opentype');
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url('assets/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+}
